@@ -273,3 +273,27 @@ $DevAAC->get(ROUTES_API_PREFIX.'/server/vocations', function() use($DevAAC) {
     $DevAAC->response->headers->set('Content-Type', 'application/json');
     $DevAAC->response->setBody(json_encode($result, JSON_PRETTY_PRINT));
 });
+
+	/**
+	 * @SWG\Resource(
+	 *  basePath="/api/v1",
+	 *  resourcePath="/server",
+	 *  @SWG\Api(
+	 *    path="/server/groups",
+	 *    description="Operations on server",
+	 *    @SWG\Operation(
+	 *      summary="Get groups",
+	 *      notes="",
+	 *      method="GET",
+	 *      type="array",
+	 *      nickname="getGroups"
+	 *   )
+	 *  )
+	 * )
+	 */
+	$DevAAC->get(ROUTES_API_PREFIX.'/server/groups', function() use($DevAAC) {
+		$result = xml2array($DevAAC->groups)['group'];
+		$DevAAC->response->headers->set('Content-Type', 'application/json');
+		$DevAAC->response->setBody(json_encode($result, JSON_PRETTY_PRINT));
+	});
+	
