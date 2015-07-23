@@ -1,0 +1,47 @@
+<div>
+    <h1 class="page-header">Offers</h1>
+
+    <div>
+        Sort by
+        <label class="radio-inline">
+            <input ng-model="order" type="radio" name="sort" value="name"> Name
+        </label>
+        <label class="radio-inline">
+            <input ng-model="order" type="radio" name="sort" value="town"> Price
+        </label>
+        <label class="checkbox-inline">
+            <input ng-model="orderReverse" type="checkbox"> Reverse order
+        </label>
+    </div>
+
+    <table class="table table-striped" ng-show="offers.length">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Count/duration</th>
+		<th>Points</th>
+                <th>Buy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="offer in offers">
+                <td>{{ offer.description }}</td>
+                <td><img src="http://items.znote.eu/{{offer.item_id}}.gif" alt="img"></td>
+                <td>{{ offer.count }}</td>
+                <td>{{ offer.points }}</td>
+                <td>
+                    <a class="btn btn-xs btn-success" Pagseguro</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p ng-show="!offers.length && loaded">
+        There are no offers on this server :(
+    </p>
+
+    <p ng-hide="loaded">
+        Loading...
+    </p>
+</div>
